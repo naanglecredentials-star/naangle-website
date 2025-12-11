@@ -54,32 +54,38 @@ export function Hero() {
 
           {/* FIXED BADGE */}
           <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
-            <motion.span
-              initial="hidden"
-              animate="visible"
-              variants={textLine}
-            >
+            <motion.span initial="hidden" animate="visible" variants={textLine}>
               AI systems
             </motion.span>
           </p>
 
-          {/* FIXED WRAPPER (NO motion.div WITH className) */}
+          {/* HEADING + SUBTEXT */}
           <div className="space-y-2">
-            <motion.div
-              variants={textContainer}
-              initial="hidden"
-              animate="visible"
-            >
+            <motion.div variants={textContainer} initial="hidden" animate="visible">
+
+              {/* FIXED HEADING (NO className on motion.span) */}
               <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-slate-900">
-                <motion.span variants={textLine} className="block">Transform</motion.span>
-                <motion.span variants={textLine} className="block">your work</motion.span>
-                <motion.span variants={textLine} className="block">with AI.</motion.span>
+
+                <motion.span variants={textLine}>
+                  <span className="block">Transform</span>
+                </motion.span>
+
+                <motion.span variants={textLine}>
+                  <span className="block">your work</span>
+                </motion.span>
+
+                <motion.span variants={textLine}>
+                  <span className="block">with AI.</span>
+                </motion.span>
+
               </h1>
 
+              {/* SUBTEXT */}
               <motion.p variants={textLine} className="text-sm text-slate-600 max-w-md">
                 NAANGLE designs calm, predictable AI systems that remove repetitive work without adding chaos.
                 Clear surfaces, reliable workflows, and measurable impact.
               </motion.p>
+
             </motion.div>
           </div>
 
@@ -100,20 +106,19 @@ export function Hero() {
 
         {/* RIGHT ANIMATED VISUALS */}
         <div className="relative h-64 md:h-80 flex items-center justify-center">
+
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            className="absolute h-[350px] w-[350px] rounded-full 
-              bg-gradient-to-br from-blue-200 via-pink-200 to-purple-200
-              blur-3xl opacity-40"
+            className="absolute h-[350px] w-[350px] rounded-full bg-gradient-to-br
+              from-blue-200 via-pink-200 to-purple-200 blur-3xl opacity-40"
           />
 
           <motion.div
             animate={{ rotate: [360, 0] }}
             transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-            className="absolute h-[280px] w-[280px] rounded-full 
-              bg-gradient-to-br from-sky-300 via-fuchsia-300 to-pink-200
-              blur-2xl opacity-50"
+            className="absolute h-[280px] w-[280px] rounded-full bg-gradient-to-br
+              from-sky-300 via-fuchsia-300 to-pink-200 blur-2xl opacity-50"
           />
 
           <motion.div
@@ -127,17 +132,15 @@ export function Hero() {
               rotate: [0, 20, -20, 0]
             }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute h-48 w-48 md:h-56 md:w-56
-              bg-gradient-to-br from-pink-400 via-fuchsia-500 to-sky-400 
-              opacity-90 blur-[1px]"
+            className="absolute h-48 w-48 md:h-56 md:w-56 bg-gradient-to-br
+              from-pink-400 via-fuchsia-500 to-sky-400 opacity-90 blur-[1px]"
           />
 
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            className="absolute h-40 w-40 md:h-48 md:w-48 
-              bg-gradient-to-br from-blue-400 to-purple-500
-              rounded-2xl shadow-2xl opacity-90"
+            className="absolute h-40 w-40 md:h-48 md:w-48 bg-gradient-to-br
+              from-blue-400 to-purple-500 rounded-2xl shadow-2xl opacity-90"
           />
 
           <motion.div
@@ -147,6 +150,7 @@ export function Hero() {
               rounded-3xl bg-white/40 backdrop-blur-xl 
               border border-white/70 shadow-[0_12px_32px_rgba(0,0,0,0.15)]"
           />
+
         </div>
       </div>
     </section>
