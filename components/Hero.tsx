@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useCallback } from "react";
 
+// TEXT ANIMATION VARIANTS
 const textContainer = {
   hidden: {},
   visible: {
@@ -13,7 +14,11 @@ const textContainer = {
 
 const textLine = {
   hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
 };
 
 export function Hero() {
@@ -48,88 +53,120 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
     >
       <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center">
-        
-        {/* LEFT SIDE TEXT */}
+        {/* LEFT CONTENT */}
         <div className="space-y-5">
+          {/* TEXT BADGE FIXED */}
+          <motion.p
+            variants={textContainer}
+            initial="hidden"
+            animate="visible"
+            className="text-[11px] uppercase tracking-[0.28em] text-slate-500"
+          >
+            <motion.span variants={textLine}>AI systems</motion.span>
+          </motion.p>
+
+          {/* HEADING */}
           <motion.div
             variants={textContainer}
             initial="hidden"
             animate="visible"
+            className="space-y-2"
           >
-            <div className="space-y-2">
-              <motion.p
-                variants={textLine}
-                className="text-[11px] uppercase tracking-[0.28em] text-slate-500"
-              >
-                AI systems · Glassmorphism interface
-              </motion.p>
+            <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-slate-900">
+              <motion.span variants={textLine} className="block">
+                Transform
+              </motion.span>
+              <motion.span variants={textLine} className="block">
+                your work
+              </motion.span>
+              <motion.span variants={textLine} className="block">
+                with AI.
+              </motion.span>
+            </h1>
 
-              <motion.h1
-                className="text-4xl md:text-5xl font-semibold leading-tight text-slate-900"
-              >
-                <motion.span variants={textLine} className="block">
-                  Transform
-                </motion.span>
-                <motion.span variants={textLine} className="block">
-                  your work
-                </motion.span>
-                <motion.span variants={textLine} className="block">
-                  with AI.
-                </motion.span>
-              </motion.h1>
-
-              <motion.p
-                variants={textLine}
-                className="text-sm text-slate-600 max-w-md"
-              >
-                NAANGLE designs calm, predictable AI systems that remove repetitive work
-                without adding chaos. Clear surfaces, reliable workflows, and measurable impact.
-              </motion.p>
-            </div>
-
-            <motion.div
+            <motion.p
               variants={textLine}
-              className="flex flex-wrap items-center gap-3 text-xs"
+              className="text-sm text-slate-600 max-w-md"
             >
-              <Link
-                href="/schedule"
-                className="rounded-full bg-black px-5 py-2 text-white font-medium hover:bg-slate-900"
-              >
-                Schedule a call
-              </Link>
-              <Link
-                href="/services"
-                className="rounded-full border border-slate-300 px-5 py-2 text-slate-800 hover:border-slate-500"
-              >
-                Explore our services
-              </Link>
-            </motion.div>
+              NAANGLE designs calm, predictable AI systems that remove
+              repetitive work without adding chaos. Clear surfaces, reliable
+              workflows, and measurable impact.
+            </motion.p>
           </motion.div>
+
+          {/* BUTTONS */}
+          <div className="flex flex-wrap items-center gap-3 text-xs">
+            <Link href="/schedule">
+              <button className="rounded-full bg-black px-5 py-2 text-white font-medium hover:bg-slate-900">
+                Schedule a call
+              </button>
+            </Link>
+
+            <Link href="/services">
+              <button className="rounded-full border border-slate-300 px-5 py-2 text-slate-800 hover:border-slate-500">
+                Explore our services
+              </button>
+            </Link>
+          </div>
         </div>
 
-        {/* RIGHT SIDE VISUALS */}
-        <div className="relative h-64 md:h-72 flex items-center justify-center">
-          
-          {/* ORB */}
-          <motion.div
-            style={{ x: orbX, y: orbY }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          >
-            <div className="h-48 w-48 md:h-56 md:w-56 rounded-full bg-[conic-gradient(at_top,_#fb7185,_#ec4899,_#6366f1,_#22d3ee,_#fb7185)] opacity-90 blur-[1px] animate-orb" />
-          </motion.div>
+        {/* RIGHT SIDE VISUAL ANIMATION */}
+        <div className="relative h-64 md:h-80 flex items-center justify-center">
 
-          {/* BACK BAR */}
+          {/* BIG SOFT BACKGROUND CLOUD */}
           <motion.div
-            style={{ x: orbX, y: orbY }}
-            className="absolute left-12 right-4 h-32 rounded-3xl bg-gradient-to-r from-pink-400 via-fuchsia-500 to-sky-400 opacity-80 blur-sm pointer-events-none"
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute h-[350px] w-[350px] rounded-full 
+                       bg-gradient-to-br from-blue-200 via-pink-200 to-purple-200
+                       blur-3xl opacity-40 pointer-events-none"
           />
 
-          {/* GLASS BLOCK */}
+          {/* SECOND CLOUD */}
           <motion.div
-            style={{ x: glassX, y: glassY }}
-            animate={{ y: [-4, 4, -4] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="relative h-40 w-32 md:h-48 md:w-40 rounded-3xl bg-white/65 backdrop-blur-2xl border border-white shadow-[0_18px_45px_rgba(15,23,42,0.35)]"
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+            className="absolute h-[280px] w-[280px] rounded-full 
+                       bg-gradient-to-br from-sky-300 via-fuchsia-300 to-pink-200
+                       blur-2xl opacity-50 pointer-events-none"
+          />
+
+          {/* ORGANIC BLOB */}
+          <motion.div
+            animate={{
+              borderRadius: [
+                "40% 60% 50% 50%",
+                "70% 30% 60% 40%",
+                "50% 50% 30% 70%",
+                "40% 60% 50% 50%"
+              ],
+              rotate: [0, 20, -20, 0]
+            }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute h-48 w-48 md:h-56 md:w-56
+                       bg-gradient-to-br from-pink-400 via-fuchsia-500 to-sky-400 
+                       opacity-90 blur-[1px]"
+          />
+
+          {/* ROTATING GEOMETRIC BLOCK */}
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+            className="absolute h-40 w-40 md:h-48 md:w-48 
+                       bg-gradient-to-br from-blue-400 to-purple-500
+                       rounded-2xl shadow-2xl opacity-90"
+          />
+
+          {/* FLOATING GLASS BLOCK */}
+          <motion.div
+            animate={{
+              y: [-6, 6, -6],
+              rotate: [-4, 4, -4]
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute h-20 w-24 md:h-40 md:w-32
+                       rounded-3xl bg-white/40 backdrop-blur-xl 
+                       border border-white/70 shadow-[0_12px_32px_rgba(0,0,0,0.15)]"
           />
         </div>
       </div>
