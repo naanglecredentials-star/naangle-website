@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useCallback } from "react";
 
 // Fix for TypeScript issue with motion.span className
-const MotionSpan = motion.span;
+const MotionSpan = motion.span as React.ComponentType<
+  React.HTMLAttributes<HTMLSpanElement> & any
+>;
 
 // TEXT ANIMATION VARIANTS
 const textContainer = {
