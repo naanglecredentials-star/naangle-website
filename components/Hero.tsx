@@ -4,6 +4,8 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useCallback } from "react";
 
+// Fix for TypeScript issue with motion.span className
+const MotionSpan = motion.span;
 
 // TEXT ANIMATION VARIANTS
 const textContainer = {
@@ -59,13 +61,9 @@ export function Hero() {
 
           {/* BADGE */}
           <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
-            <motion.span
-              initial="hidden"
-              animate="visible"
-              variants={textLine}
-            >
+            <MotionSpan initial="hidden" animate="visible" variants={textLine}>
               AI systems
-            </motion.span>
+            </MotionSpan>
           </p>
 
           {/* HEADING + SUBTEXT */}
@@ -76,26 +74,26 @@ export function Hero() {
               animate="visible"
             >
               <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-slate-900">
-                <motion.span variants={textLine} className="block">
+
+                <MotionSpan variants={textLine} className="block">
                   Transform
-                </motion.span>
+                </MotionSpan>
 
-                <motion.span variants={textLine} className="block">
+                <MotionSpan variants={textLine} className="block">
                   your work
-                </motion.span>
+                </MotionSpan>
 
-                <motion.span variants={textLine} className="block">
+                <MotionSpan variants={textLine} className="block">
                   with AI.
-                </motion.span>
+                </MotionSpan>
               </h1>
 
-              {/* FIXED SUBTEXT – no className on motion.p */}
               <p className="text-sm text-slate-600 max-w-md">
-                <motion.span variants={textLine}>
+                <MotionSpan variants={textLine}>
                   NAANGLE designs calm, predictable AI systems that remove 
                   repetitive work without adding chaos. Clear surfaces, 
                   reliable workflows, and measurable impact.
-                </motion.span>
+                </MotionSpan>
               </p>
             </motion.div>
           </div>
@@ -154,7 +152,7 @@ export function Hero() {
                        opacity-90 blur-[1px]"
           />
 
-          {/* ROTATING GEOMETRIC BLOCK */}
+          {/* ROTATING BLOCK */}
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
