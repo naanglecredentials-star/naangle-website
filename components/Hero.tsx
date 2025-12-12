@@ -4,9 +4,13 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useCallback } from "react";
 
-// Fix for TypeScript issue with motion.span className
+// Typed wrappers to fully enable className + HTML props
 const MotionSpan = motion.span as React.ComponentType<
   React.HTMLAttributes<HTMLSpanElement> & any
+>;
+
+const MotionDiv = motion.div as React.ComponentType<
+  React.HTMLAttributes<HTMLDivElement> & any
 >;
 
 // TEXT ANIMATION VARIANTS
@@ -120,7 +124,7 @@ export function Hero() {
         <div className="relative h-64 md:h-80 flex items-center justify-center">
           
           {/* BACKGROUND GRADIENT CLOUD */}
-          <motion.div
+          <MotionDiv
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             className="absolute h-[350px] w-[350px] rounded-full
@@ -129,7 +133,7 @@ export function Hero() {
           />
 
           {/* SECOND CLOUD */}
-          <motion.div
+          <MotionDiv
             animate={{ rotate: [360, 0] }}
             transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
             className="absolute h-[280px] w-[280px] rounded-full
@@ -138,7 +142,7 @@ export function Hero() {
           />
 
           {/* ORGANIC BLOB */}
-          <motion.div
+          <MotionDiv
             animate={{
               borderRadius: [
                 "40% 60% 50% 50%",
@@ -155,7 +159,7 @@ export function Hero() {
           />
 
           {/* ROTATING BLOCK */}
-          <motion.div
+          <MotionDiv
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
             className="absolute h-40 w-40 md:h-48 md:w-48
@@ -164,7 +168,7 @@ export function Hero() {
           />
 
           {/* FLOATING GLASS BLOCK */}
-          <motion.div
+          <MotionDiv
             animate={{ y: [-6, 6, -6], rotate: [-4, 4, -4] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
             className="absolute h-20 w-24 md:h-40 md:w-32
