@@ -1,8 +1,9 @@
 "use client";
-import { motion } from "framer-motion";
+
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useCallback } from "react";
+
 
 // TEXT ANIMATION VARIANTS
 const textContainer = {
