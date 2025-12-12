@@ -2,6 +2,12 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import React from "react";
+
+// Typed wrapper for Framer header to restore DOM props (className, etc.)
+const MotionHeader = motion.header as React.ComponentType<
+  React.HTMLAttributes<HTMLElement> & any
+>;
 
 const links = [
   { href: "/", label: "Home" },
@@ -12,7 +18,7 @@ const links = [
 
 export function Navbar() {
   return (
-    <motion.header
+    <MotionHeader
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
@@ -26,6 +32,7 @@ export function Navbar() {
           NAANGLE
         </span>
       </div>
+
       <nav className="flex items-center gap-6 text-xs text-slate-600">
         {links.map((link) => (
           <Link key={link.href} href={link.href} className="hover:text-slate-900">
@@ -33,11 +40,12 @@ export function Navbar() {
           </Link>
         ))}
       </nav>
+
       <div className="flex items-center gap-3 text-xs">
         <button className="px-4 py-1.5 rounded-full bg-black text-white font-medium hover:bg-slate-900">
           Sign up
         </button>
       </div>
-    </motion.header>
+    </MotionHeader>
   );
 }
